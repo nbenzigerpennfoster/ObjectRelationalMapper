@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [tinkering]    Script Date: 12/2/2022 9:32:00 AM ******/
+/****** Object:  Database [tinkering]    Script Date: 12/2/2022 9:59:44 AM ******/
 CREATE DATABASE [tinkering]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [tinkering] SET QUERY_STORE = OFF
 GO
 USE [tinkering]
 GO
-/****** Object:  Table [dbo].[Address]    Script Date: 12/2/2022 9:32:01 AM ******/
+/****** Object:  Table [dbo].[Address]    Script Date: 12/2/2022 9:59:44 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[Address](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Child]    Script Date: 12/2/2022 9:32:01 AM ******/
+/****** Object:  Table [dbo].[Child]    Script Date: 12/2/2022 9:59:44 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[Child](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Person]    Script Date: 12/2/2022 9:32:01 AM ******/
+/****** Object:  Table [dbo].[Person]    Script Date: 12/2/2022 9:59:44 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,6 +132,18 @@ CREATE TABLE [dbo].[Person](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+INSERT [dbo].[Address] ([PersonId], [Address1], [Address2], [City], [State], [Zip]) VALUES (N'dea386a0-e72a-4859-99d6-29a750b44ef8', N'123 Fake Street', NULL, N'Fakeville', N'NJ', N'12345')
+GO
+INSERT [dbo].[Address] ([PersonId], [Address1], [Address2], [City], [State], [Zip]) VALUES (N'0b03429c-6afe-4e06-831b-ba0a74400135', N'108 Lost Drive', NULL, N'Happy Place', N'NJ', N'86753')
+GO
+INSERT [dbo].[Child] ([Id], [PersonId], [FirstName], [LastName], [RelationshipType]) VALUES (N'e9055dbb-f68f-4cfa-b070-61721e73e8cb', N'0b03429c-6afe-4e06-831b-ba0a74400135', N'Daughter', N'Benziger', 2)
+GO
+INSERT [dbo].[Child] ([Id], [PersonId], [FirstName], [LastName], [RelationshipType]) VALUES (N'67f79014-3838-4d27-b850-6f3f47f094d0', N'0b03429c-6afe-4e06-831b-ba0a74400135', N'Son', N'Benziger', 3)
+GO
+INSERT [dbo].[Person] ([Id], [FirstName], [LastName], [Age]) VALUES (N'dea386a0-e72a-4859-99d6-29a750b44ef8', N'Blug', N'Glub', 25)
+GO
+INSERT [dbo].[Person] ([Id], [FirstName], [LastName], [Age]) VALUES (N'0b03429c-6afe-4e06-831b-ba0a74400135', N'Neil', N'Benziger', 37)
 GO
 ALTER TABLE [dbo].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_Person] FOREIGN KEY([PersonId])
 REFERENCES [dbo].[Person] ([Id])
