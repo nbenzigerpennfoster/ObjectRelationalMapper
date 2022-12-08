@@ -22,9 +22,9 @@ namespace EntityFramework
             {
                 switch (evnt)
                 {
-                    // Need this to tell Entity Framework to remove Person from the database
-                    case PersonDeletedEvent pde:
-                        Remove(pde.PersonDeleteData);
+                    // Need this to tell Entity Framework to remove a tracked entity from the database
+                    case DeletedEvent de:
+                        Remove(de.GetDeletedEntity());
                         break;
                 }
             }

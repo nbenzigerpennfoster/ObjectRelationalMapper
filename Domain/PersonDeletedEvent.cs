@@ -1,7 +1,6 @@
 ﻿namespace Domain
 {
-    public class PersonDeletedEvent : Event
+    public class PersonDeletedEvent : DeletedEvent<Person>
     {
-        public Person PersonDeleteData { get; set; }
     }
 }

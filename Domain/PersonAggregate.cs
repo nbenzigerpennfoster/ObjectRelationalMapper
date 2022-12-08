@@ -64,7 +64,7 @@
 
             StageEvent(new PersonDeletedEvent
             {
-                PersonDeleteData = person
+                DeletedEntity = person
             });
         }
 

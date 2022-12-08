@@ -78,7 +78,7 @@ namespace ORM.Dapper
                                 WHERE Id = @personId;";
                             sqlParams = new
                             {
-                                personId = pde.PersonDeleteData.PersonId,
+                                personId = pde.DeletedEntity.PersonId,
                             };
                             break;
                     }
