@@ -75,7 +75,7 @@
                 RecordError("Person doesn't have a complete name");
             }
 
-            if (personToValidate.Age > 150)
+            if (personToValidate.Age < 0 || personToValidate.Age > 150)
             {
                 RecordError("Age range is invalid");
             }
